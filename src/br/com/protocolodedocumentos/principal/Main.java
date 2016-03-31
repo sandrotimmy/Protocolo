@@ -1,6 +1,7 @@
 
 package br.com.protocolodedocumentos.principal;
 
+import br.com.protocolodedocumentos.classes.Requerente;
 import br.com.protocolodedocumentos.conexao.ConexaoEntityManager;
 import javax.swing.*;
 import java.sql.SQLException;
@@ -12,9 +13,9 @@ public class Main {
 
         UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         EntityManager em = ConexaoEntityManager.getInstance();
-//        em.getTransaction();
-//        em.persist(new Requerente (1,"teste", "teste"));
-//        em.getTransaction().commit();
+        em.getTransaction().begin();
+        em.persist(new Requerente (2323,"teste", "teste"));
+        em.getTransaction().commit();
 //        HistoricoPadrao historico = new HistoricoPadrao(105,"teste","teste");
 //        em.getTransaction().begin();
 //        em.persist(historico);

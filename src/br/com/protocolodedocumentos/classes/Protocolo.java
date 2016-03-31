@@ -5,9 +5,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -24,8 +26,7 @@ public class Protocolo implements Serializable {
     @Column(length = 50, nullable = false)
     private String nome;
     @OneToOne
-    private Protocolo protocolo;
-    @OneToOne
+    @JoinColumn(name = "requerente", foreignKey = @ForeignKey(name = "fk_requerente_protocolo"))
     private Requerente requerente;
     @OneToMany(mappedBy = "protocolo")
     private List<Documentos> documentos;

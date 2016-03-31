@@ -25,14 +25,11 @@ public class Requerente implements Serializable {
     private String nome;
     @Column(length = 20)
     private String profissao;
-    @OneToOne
-    private Protocolo protocolo;
 
     public Requerente() {
     }
 
-    public Requerente(Long id, long CPF, String nome, String profissao) {
-        this.id = id;
+    public Requerente(long CPF, String nome, String profissao) {
         this.CPF = CPF;
         this.nome = nome;
         this.profissao = profissao;
