@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -18,25 +19,22 @@ public class Documentos implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Documentos")
-	@SequenceGenerator(name = "seq_Documentos", sequenceName = "s_Documentos")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Documentos")
+    @SequenceGenerator(name = "seq_Documentos", sequenceName = "s_Documentos")
     private Long id;
     @Column(length = 50, nullable = false)
     private String nome;
     @ManyToOne(optional = false)
     @JoinColumn(name = "protocolo", foreignKey = @ForeignKey(name = "fk_documentos_protocolo"))
     private Protocolo protocolo;
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "classificacao", foreignKey = @ForeignKey(name = "fk_documentos_classificacao"))
-    private Classificacao classificacao;
+
 
     public Documentos() {
     }
 
-    public Documentos(String nome, Protocolo protocolo, Classificacao classificacao) {
+    public Documentos(String nome, Protocolo protocolo) {
         this.nome = nome;
         this.protocolo = protocolo;
-        this.classificacao = classificacao;
     }
 
     public Long getId() {
@@ -61,14 +59,6 @@ public class Documentos implements Serializable {
 
     public void setProtocolo(Protocolo protocolo) {
         this.protocolo = protocolo;
-    }
-
-    public Classificacao getClassificacao() {
-        return classificacao;
-    }
-
-    public void setClassificacao(Classificacao classificacao) {
-        this.classificacao = classificacao;
     }
 
     @Override

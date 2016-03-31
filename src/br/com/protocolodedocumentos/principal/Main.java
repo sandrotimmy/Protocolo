@@ -1,6 +1,7 @@
 
-package br.com.protocolodedocumentos.classes;
+package br.com.protocolodedocumentos.principal;
 
+import br.com.protocolodedocumentos.conexao.ConexaoEntityManager;
 import javax.swing.*;
 import java.sql.SQLException;
 import javax.persistence.EntityManager;
