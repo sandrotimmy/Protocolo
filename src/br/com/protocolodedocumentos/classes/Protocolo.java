@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Protocolo implements Serializable {
@@ -20,8 +21,10 @@ public class Protocolo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @SequenceGenerator(name = "seq_protocolo", sequenceName = "s_protocolo")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_protocolo")
+    @GeneratedValue(generator = "s_protocolo")
+    @GenericGenerator(name = "s_protocolo", strategy = "increment")
+//    @SequenceGenerator(name = "seq_protocolo", sequenceName = "s_protocolo")
+//    @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_protocolo")
     private Long id;
     @Column(length = 50, nullable = false)
     private String nome;
@@ -34,13 +37,28 @@ public class Protocolo implements Serializable {
     public Protocolo() {
     }
 
+    public Protocolo(String nome) {
+        this.nome = nome;
+    }
+
+    
     public Protocolo(String nome, List<Documentos> documentos) {
         this.nome = nome;
         this.documentos = documentos;
     }
 
+
+
     public Long getId() {
         return id;
+    }
+
+    public List<Documentos> getDocumentos() {
+        return documentos;
+    }
+
+    public Requerente getRequerente() {
+        return requerente;
     }
 
     public void setId(Long id) {
@@ -53,6 +71,14 @@ public class Protocolo implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public void setDocumentos(List<Documentos> documentos) {
+        this.documentos = documentos;
+    }
+
+    public void setRequerente(Requerente requerente) {
+        this.requerente = requerente;
     }
 
     @Override

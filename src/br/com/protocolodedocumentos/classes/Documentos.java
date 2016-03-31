@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Documentos implements Serializable {
@@ -19,46 +20,67 @@ public class Documentos implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Documentos")
-    @SequenceGenerator(name = "seq_Documentos", sequenceName = "s_Documentos")
+    @GeneratedValue(generator = "s_documentos")
+    @GenericGenerator(name = "s_documentos", strategy = "increment")
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Documentos")
+//    @SequenceGenerator(name = "seq_Documentos", sequenceName = "s_Documentos")
     private Long id;
     @Column(length = 50, nullable = false)
-    private String nome;
+    private String tipo;
     @ManyToOne(optional = false)
     @JoinColumn(name = "protocolo", foreignKey = @ForeignKey(name = "fk_documentos_protocolo"))
     private Protocolo protocolo;
-
+    private String documento;
+    private String complemento;
 
     public Documentos() {
     }
 
-    public Documentos(String nome, Protocolo protocolo) {
-        this.nome = nome;
+    public Documentos(Protocolo protocolo, String tipo, String documento, String complemento) {
         this.protocolo = protocolo;
+        this.tipo = tipo;
+        this.documento = documento;
+        this.complemento = complemento;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getTipo() {
+        return tipo;
     }
 
     public Protocolo getProtocolo() {
         return protocolo;
     }
 
+    public String getDocumento() {
+        return documento;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     public void setProtocolo(Protocolo protocolo) {
         this.protocolo = protocolo;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
 
     @Override
@@ -90,4 +112,10 @@ public class Documentos implements Serializable {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

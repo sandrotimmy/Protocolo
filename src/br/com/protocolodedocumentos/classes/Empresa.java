@@ -9,14 +9,17 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
 public class Empresa implements Serializable {
         private static final long serialVersionUID = 1L;
     	@Id
-	@GeneratedValue(strategy = SEQUENCE, generator = "s_empresa")
-	@SequenceGenerator(name="s_empresa", sequenceName="s_empresa")
+            @GeneratedValue(generator = "s_empresa")
+    @GenericGenerator(name = "s_empresa", strategy = "increment")
+//	@GeneratedValue(strategy = SEQUENCE, generator = "s_empresa")
+//	@SequenceGenerator(name="s_empresa", sequenceName="s_empresa")
 	private Long id;
         @Column(length=14)
         private long CNPJ;
