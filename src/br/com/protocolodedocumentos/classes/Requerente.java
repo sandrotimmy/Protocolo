@@ -11,8 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 import org.hibernate.annotations.GenericGenerator;
 
+@XmlType
 @Entity
 public class Requerente implements Serializable {
 
@@ -29,6 +32,7 @@ public class Requerente implements Serializable {
     @Column(length = 20)
     private String profissao;
     @JoinColumn
+    @OneToOne(mappedBy = "requerente")
     Protocolo protocolo;
 
     public Requerente() {

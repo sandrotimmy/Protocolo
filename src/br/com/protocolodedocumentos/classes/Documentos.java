@@ -12,8 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.xml.bind.annotation.XmlType;
 import org.hibernate.annotations.GenericGenerator;
 
+@XmlType
 @Entity
 public class Documentos implements Serializable {
 

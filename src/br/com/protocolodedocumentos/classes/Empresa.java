@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlType;
 import org.hibernate.annotations.GenericGenerator;
 
+@XmlType
 @Entity
 public class Empresa implements Serializable {
 
@@ -23,6 +25,7 @@ public class Empresa implements Serializable {
     private String RazaoSocial;
     @Column(length = 20)
     private String segmento;
+    @OneToOne(mappedBy = "empresa")
     Protocolo protocolo;
 
     public Empresa() {
