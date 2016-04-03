@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import org.hibernate.annotations.GenericGenerator;
@@ -20,8 +21,6 @@ public class Requerente implements Serializable {
     @Id
     @GeneratedValue(generator = "s_requerente")
     @GenericGenerator(name = "s_requerente", strategy = "increment")
-//    @SequenceGenerator(name = "s_requerente", sequenceName = "seq_requerente",allocationSize=1)
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "s_requerente")
     private Long id;
     @Column(length = 11)
     private long CPF;
@@ -29,15 +28,24 @@ public class Requerente implements Serializable {
     private String nome;
     @Column(length = 20)
     private String profissao;
+    @JoinColumn
+    Protocolo protocolo;
 
     public Requerente() {
     }
 
-    public Requerente(long CPF, String nome, String profissao) {
+    public Requerente(long CPF, String nome, String profissao, Protocolo protocolo) {
         this.CPF = CPF;
         this.nome = nome;
         this.profissao = profissao;
+        this.protocolo = protocolo;
     }
+
+    public Protocolo getProtocolo() {
+        return protocolo;
+    }
+
+
 
     public Long getId() {
         return id;
@@ -55,6 +63,11 @@ public class Requerente implements Serializable {
         return profissao;
     }
 
+    public void setProtocolo(Protocolo protocolo) {
+        this.protocolo = protocolo;
+    }
+
+    
     public void setId(Long id) {
         this.id = id;
     }

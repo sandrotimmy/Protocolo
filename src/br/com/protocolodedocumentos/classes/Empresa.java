@@ -1,4 +1,3 @@
-
 package br.com.protocolodedocumentos.classes;
 
 import java.io.Serializable;
@@ -6,27 +5,25 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
-
 
 @Entity
 public class Empresa implements Serializable {
-        private static final long serialVersionUID = 1L;
-    	@Id
-            @GeneratedValue(generator = "s_empresa")
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(generator = "s_empresa")
     @GenericGenerator(name = "s_empresa", strategy = "increment")
-//	@GeneratedValue(strategy = SEQUENCE, generator = "s_empresa")
-//	@SequenceGenerator(name="s_empresa", sequenceName="s_empresa")
-	private Long id;
-        @Column(length=14)
-        private long CNPJ;
-        @Column(length=50)
-        private String RazaoSocial;
-        @Column(length=20)
-        private String segmento;
+    private Long id;
+    @Column(length = 14)
+    private long CNPJ;
+    @Column(length = 50)
+    private String RazaoSocial;
+    @Column(length = 20)
+    private String segmento;
+    Protocolo protocolo;
 
     public Empresa() {
     }
@@ -35,6 +32,13 @@ public class Empresa implements Serializable {
         this.CNPJ = CNPJ;
         this.RazaoSocial = RazaoSocial;
         this.segmento = segmento;
+    }
+
+    public Empresa(long CNPJ, String RazaoSocial, String segmento, Protocolo protocolo) {
+        this.CNPJ = CNPJ;
+        this.RazaoSocial = RazaoSocial;
+        this.segmento = segmento;
+        this.protocolo = protocolo;
     }
 
     public Long getId() {
@@ -53,6 +57,10 @@ public class Empresa implements Serializable {
         return segmento;
     }
 
+    public Protocolo getProtocolo() {
+        return protocolo;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -69,9 +77,13 @@ public class Empresa implements Serializable {
         this.segmento = segmento;
     }
 
+    public void setProtocolo(Protocolo protocolo) {
+        this.protocolo = protocolo;
+    }
+
     @Override
     public int hashCode() {
-        return super.hashCode(); //To change body of generated methods, choose Tools | Templates.
+        return super.hashCode();
     }
 
     @Override
@@ -97,10 +109,7 @@ public class Empresa implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+        return super.toString();
     }
-    
-    
-    
-    
+
 }

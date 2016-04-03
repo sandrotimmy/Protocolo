@@ -22,17 +22,17 @@ public class Documentos implements Serializable {
     @Id
     @GeneratedValue(generator = "s_documentos")
     @GenericGenerator(name = "s_documentos", strategy = "increment")
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Documentos")
-//    @SequenceGenerator(name = "seq_Documentos", sequenceName = "s_Documentos")
     private Long id;
     @Column(length = 50, nullable = false)
     private String tipo;
+    @Column(length = 100, nullable = false)
+    private String documento;
+    @Column(length = 100, nullable = false)
+    private String complemento;
     @ManyToOne(optional = false)
     @JoinColumn(name = "protocolo", foreignKey = @ForeignKey(name = "fk_documentos_protocolo"))
     private Protocolo protocolo;
-    private String documento;
-    private String complemento;
-
+    
     public Documentos() {
     }
 
@@ -41,6 +41,14 @@ public class Documentos implements Serializable {
         this.tipo = tipo;
         this.documento = documento;
         this.complemento = complemento;
+    }
+
+    public Documentos(Long id, String tipo, String documento, String complemento, Protocolo protocolo) {
+        this.id = id;
+        this.tipo = tipo;
+        this.documento = documento;
+        this.complemento = complemento;
+        this.protocolo = protocolo;
     }
 
     public Long getId() {
