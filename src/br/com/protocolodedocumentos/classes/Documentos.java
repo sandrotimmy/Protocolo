@@ -6,17 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import org.hibernate.annotations.GenericGenerator;
 
-@XmlType
 @Entity
+@XmlAccessorType(XmlAccessType.NONE)
 public class Documentos implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -24,12 +23,16 @@ public class Documentos implements Serializable {
     @Id
     @GeneratedValue(generator = "s_documentos")
     @GenericGenerator(name = "s_documentos", strategy = "increment")
+    @XmlElement(name="id")
     private Long id;
     @Column(length = 50, nullable = false)
+    @XmlElement(name="tipo")
     private String tipo;
     @Column(length = 100, nullable = false)
+    @XmlElement(name="documento")
     private String documento;
     @Column(length = 100, nullable = false)
+    @XmlElement(name="complemento")
     private String complemento;
     @ManyToOne(optional = false)
     @JoinColumn(name = "protocolo", foreignKey = @ForeignKey(name = "fk_documentos_protocolo"))
@@ -122,10 +125,13 @@ public class Documentos implements Serializable {
         }
         return true;
     }
+    
 
     @Override
     public String toString() {
-        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+        return "\nCODIGO: "+id+"\nTIPO: "+tipo+"\nDOCUMENTO: "+documento+"\nCOMPLEMENTO: "+complemento; //To change body of generated methods, choose Tools | Templates.
     }
+
+
 
 }

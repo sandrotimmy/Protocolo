@@ -5,18 +5,15 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import org.hibernate.annotations.GenericGenerator;
 
-@XmlType
 @Entity
+@XmlAccessorType(XmlAccessType.NONE)
 public class Requerente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -24,14 +21,17 @@ public class Requerente implements Serializable {
     @Id
     @GeneratedValue(generator = "s_requerente")
     @GenericGenerator(name = "s_requerente", strategy = "increment")
+    @XmlElement(name="id")
     private Long id;
     @Column(length = 11)
+    @XmlElement(name="CPF")
     private long CPF;
     @Column(length = 50)
+    @XmlElement(name="nome")
     private String nome;
     @Column(length = 20)
+    @XmlElement(name="profissao")
     private String profissao;
-    @JoinColumn
     @OneToOne(mappedBy = "requerente")
     Protocolo protocolo;
 
@@ -45,11 +45,17 @@ public class Requerente implements Serializable {
         this.protocolo = protocolo;
     }
 
+    public Requerente(Long id, long CPF, String nome, String profissao) {
+        this.id = id;
+        this.CPF = CPF;
+        this.nome = nome;
+        this.profissao = profissao;
+        this.protocolo = protocolo;
+    }
+
     public Protocolo getProtocolo() {
         return protocolo;
     }
-
-
 
     public Long getId() {
         return id;
@@ -71,7 +77,6 @@ public class Requerente implements Serializable {
         this.protocolo = protocolo;
     }
 
-    
     public void setId(Long id) {
         this.id = id;
     }

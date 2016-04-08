@@ -14,11 +14,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 import org.hibernate.annotations.GenericGenerator;
 
-@XmlType
+
 @Entity
+@XmlRootElement(name ="protocolo")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Protocolo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,11 +41,14 @@ public class Protocolo implements Serializable {
     private String observacoes;
     @OneToOne
     @JoinColumn(name = "requerente", foreignKey = @ForeignKey(name = "fk_requerente_protocolo"))
+    @XmlElement
     private Requerente requerente;
     @OneToOne
     @JoinColumn(name = "empresa", foreignKey = @ForeignKey(name = "fk_empresa_protocolo"))
     private Empresa empresa;
     @OneToMany(mappedBy = "protocolo")
+    @XmlElementWrapper(name="documentos")
+    @XmlElement(name = "documento")
     private List<Documentos> documentos;
 
     public Protocolo() {
@@ -146,6 +155,11 @@ public class Protocolo implements Serializable {
         }
         return true;
     }
+
+//    @Override
+//    public String toString() {
+//        return "ID: "+id+"Data: "+dataProtocolo+"Retorno: "+retorno+"Onbervações: "+observacoes; //To change body of generated methods, choose Tools | Templates.
+//    }
 
     @Override
     public String toString() {

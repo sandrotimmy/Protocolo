@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocolo>
+    <id>1</id>
+    <dataProtocolo>2016-04-06T00:00:00-03:00</dataProtocolo>
+    <retorno>Sim</retorno>
+    <observacoes>Documentos originais</observacoes>
+    <requerente>
+        <id>1</id>
+        <CPF>4568</CPF>
+        <nome>Sandro Machado</nome>
+        <profissao>Tec.Contabil</profissao>
+    </requerente>
+    <empresa>
+        <id>1</id>
+        <CNPJ>11111</CNPJ>
+        <RazaoSocial>EMPRESA DE FAIXADA LTDA</RazaoSocial>
+        <Segmento>Industria</Segmento>
+    </empresa>
+    <documentos>
+        <documento>
+            <id>1</id>
+            <tipo>Empresarial</tipo>
+            <documento>Contrato Social</documento>
+            <complemento>Pertencente a Empresa Fulano de Tal LTDA</complemento>
+        </documento>
+        <documento>
+            <id>2</id>
+            <tipo>Pessoal</tipo>
+            <documento>Documento Identidade</documento>
+            <complemento>Socio Anderson Lima</complemento>
+        </documento>
+        <documento>
+            <id>3</id>
+            <tipo>Imposto</tipo>
+            <documento>SIMPLES NACIONAL</documento>
+            <complemento>Competencia 04/2016</complemento>
+        </documento>
+    </documentos>
+</protocolo>
