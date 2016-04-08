@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="empresa" type="empresa"/>
+
+  <xs:element name="protocolo" type="protocolo"/>
+
+  <xs:complexType name="protocolo">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="dataProtocolo" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="retorno" type="xs:string" minOccurs="0"/>
+      <xs:element name="observacoes" type="xs:string" minOccurs="0"/>
+      <xs:element name="requerente" type="requerente" minOccurs="0"/>
+      <xs:element ref="empresa" minOccurs="0"/>
+      <xs:element name="documentos" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="documento" type="documentos" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="requerente">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="CPF" type="xs:long"/>
+      <xs:element name="nome" type="xs:string" minOccurs="0"/>
+      <xs:element name="profissao" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="empresa">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="CNPJ" type="xs:long"/>
+      <xs:element name="RazaoSocial" type="xs:string" minOccurs="0"/>
+      <xs:element name="Segmento" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="documentos">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long" minOccurs="0"/>
+      <xs:element name="tipo" type="xs:string" minOccurs="0"/>
+      <xs:element name="documento" type="xs:string" minOccurs="0"/>
+      <xs:element name="complemento" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

@@ -10,28 +10,26 @@ import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlRootElement(name ="empresa")
 public class Empresa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(generator = "s_empresa")
     @GenericGenerator(name = "s_empresa", strategy = "increment")
-    @XmlElement(name="id")
+    @XmlElement(name = "id")
     private Long id;
     @Column(length = 14)
-    @XmlElement(name="CNPJ")
+    @XmlElement(name = "CNPJ")
     private long CNPJ;
     @Column(length = 50)
-    @XmlElement(name="RazaoSocial")
+    @XmlElement(name = "RazaoSocial")
     private String RazaoSocial;
     @Column(length = 20)
-    @XmlElement(name="Segmento")
+    @XmlElement(name = "Segmento")
     private String segmento;
     @OneToOne(mappedBy = "empresa")
     Protocolo protocolo;

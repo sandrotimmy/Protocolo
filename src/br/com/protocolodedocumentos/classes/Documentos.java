@@ -23,21 +23,21 @@ public class Documentos implements Serializable {
     @Id
     @GeneratedValue(generator = "s_documentos")
     @GenericGenerator(name = "s_documentos", strategy = "increment")
-    @XmlElement(name="id")
+    @XmlElement(name = "id")
     private Long id;
     @Column(length = 50, nullable = false)
-    @XmlElement(name="tipo")
+    @XmlElement(name = "tipo")
     private String tipo;
     @Column(length = 100, nullable = false)
-    @XmlElement(name="documento")
+    @XmlElement(name = "documento")
     private String documento;
     @Column(length = 100, nullable = false)
-    @XmlElement(name="complemento")
+    @XmlElement(name = "complemento")
     private String complemento;
     @ManyToOne(optional = false)
     @JoinColumn(name = "protocolo", foreignKey = @ForeignKey(name = "fk_documentos_protocolo"))
     private Protocolo protocolo;
-    
+
     public Documentos() {
     }
 
@@ -125,13 +125,10 @@ public class Documentos implements Serializable {
         }
         return true;
     }
-    
 
     @Override
     public String toString() {
-        return "\nCODIGO: "+id+"\nTIPO: "+tipo+"\nDOCUMENTO: "+documento+"\nCOMPLEMENTO: "+complemento; //To change body of generated methods, choose Tools | Templates.
+        return "\nCODIGO: " + id + "\nTIPO: " + tipo + "\nDOCUMENTO: " + documento + "\nCOMPLEMENTO: " + complemento; //To change body of generated methods, choose Tools | Templates.
     }
-
-
 
 }

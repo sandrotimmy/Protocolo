@@ -50,7 +50,6 @@ public class Requerente implements Serializable {
         this.CPF = CPF;
         this.nome = nome;
         this.profissao = profissao;
-        this.protocolo = protocolo;
     }
 
     public Protocolo getProtocolo() {

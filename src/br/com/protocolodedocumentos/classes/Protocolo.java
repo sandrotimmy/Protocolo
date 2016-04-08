@@ -21,10 +21,9 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.hibernate.annotations.GenericGenerator;
 
-
 @Entity
-@XmlRootElement(name ="protocolo")
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "protocolo")
+@XmlAccessorType(XmlAccessType.NONE)
 public class Protocolo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,23 +31,28 @@ public class Protocolo implements Serializable {
     @Id
     @GeneratedValue(generator = "s_protocolo")
     @GenericGenerator(name = "s_protocolo", strategy = "increment")
+    @XmlElement(name = "id")
     private Long id;
     @Temporal(TemporalType.DATE)
+    @XmlElement(name = "dataProtocolo")
     private Date dataProtocolo;
     @Column(length = 3, nullable = false)
+    @XmlElement(name = "retorno")
     String retorno;
     @Column(length = 150)
+    @XmlElement(name = "observacoes")
     private String observacoes;
     @OneToOne
     @JoinColumn(name = "requerente", foreignKey = @ForeignKey(name = "fk_requerente_protocolo"))
-    @XmlElement
+    @XmlElement(name = "requerente")
     private Requerente requerente;
     @OneToOne
     @JoinColumn(name = "empresa", foreignKey = @ForeignKey(name = "fk_empresa_protocolo"))
+    @XmlElement(name = "empresa")
     private Empresa empresa;
     @OneToMany(mappedBy = "protocolo")
-    @XmlElementWrapper(name="documentos")
-    @XmlElement(name = "documento")
+    @XmlElementWrapper(name = "documentos2")
+    @XmlElement(name = "documentos")
     private List<Documentos> documentos;
 
     public Protocolo() {
@@ -160,7 +164,6 @@ public class Protocolo implements Serializable {
 //    public String toString() {
 //        return "ID: "+id+"Data: "+dataProtocolo+"Retorno: "+retorno+"Onbervações: "+observacoes; //To change body of generated methods, choose Tools | Templates.
 //    }
-
     @Override
     public String toString() {
         return super.toString(); //To change body of generated methods, choose Tools | Templates.
