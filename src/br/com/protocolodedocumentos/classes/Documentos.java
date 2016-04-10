@@ -1,14 +1,7 @@
 package br.com.protocolodedocumentos.classes;
 
 import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -128,7 +121,6 @@ public class Documentos implements Serializable {
 
     @Override
     public String toString() {
-        return "\nCODIGO: " + id + "\nTIPO: " + tipo + "\nDOCUMENTO: " + documento + "\nCOMPLEMENTO: " + complemento; //To change body of generated methods, choose Tools | Templates.
+        return "\nCODIGO: " + id + "\nTIPO: " + tipo + "\nDOCUMENTO: " + documento + "\nCOMPLEMENTO: " + complemento;
     }
-
 }

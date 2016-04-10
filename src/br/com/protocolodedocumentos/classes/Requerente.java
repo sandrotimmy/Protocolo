@@ -2,11 +2,7 @@ package br.com.protocolodedocumentos.classes;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -23,7 +19,7 @@ public class Requerente implements Serializable {
     @GenericGenerator(name = "s_requerente", strategy = "increment")
     @XmlElement(name="id")
     private Long id;
-    @Column(length = 11)
+    @Column(length = 19)
     @XmlElement(name="CPF")
     private long CPF;
     @Column(length = 50)

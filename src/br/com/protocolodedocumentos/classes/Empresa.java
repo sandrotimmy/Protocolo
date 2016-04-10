@@ -2,11 +2,7 @@ package br.com.protocolodedocumentos.classes;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -17,19 +13,19 @@ import org.hibernate.annotations.GenericGenerator;
 public class Empresa implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(generator = "s_empresa")
     @GenericGenerator(name = "s_empresa", strategy = "increment")
     @XmlElement(name = "id")
     private Long id;
-    @Column(length = 14)
     @XmlElement(name = "CNPJ")
     private long CNPJ;
     @Column(length = 50)
-    @XmlElement(name = "RazaoSocial")
-    private String RazaoSocial;
+    @XmlElement(name = "razaoSocial")
+    private String razaoSocial;
     @Column(length = 20)
-    @XmlElement(name = "Segmento")
+    @XmlElement(name = "segmento")
     private String segmento;
     @OneToOne(mappedBy = "empresa")
     Protocolo protocolo;
@@ -39,13 +35,13 @@ public class Empresa implements Serializable {
 
     public Empresa(long CNPJ, String RazaoSocial, String segmento) {
         this.CNPJ = CNPJ;
-        this.RazaoSocial = RazaoSocial;
+        this.razaoSocial = RazaoSocial;
         this.segmento = segmento;
     }
 
     public Empresa(long CNPJ, String RazaoSocial, String segmento, Protocolo protocolo) {
         this.CNPJ = CNPJ;
-        this.RazaoSocial = RazaoSocial;
+        this.razaoSocial = RazaoSocial;
         this.segmento = segmento;
         this.protocolo = protocolo;
     }
@@ -59,7 +55,7 @@ public class Empresa implements Serializable {
     }
 
     public String getRazaoSocial() {
-        return RazaoSocial;
+        return razaoSocial;
     }
 
     public String getSegmento() {
@@ -79,7 +75,7 @@ public class Empresa implements Serializable {
     }
 
     public void setRazaoSocial(String RazaoSocial) {
-        this.RazaoSocial = RazaoSocial;
+        this.razaoSocial = RazaoSocial;
     }
 
     public void setSegmento(String segmento) {
@@ -110,7 +106,7 @@ public class Empresa implements Serializable {
         if (this.CNPJ != other.CNPJ) {
             return false;
         }
-        if (!Objects.equals(this.RazaoSocial, other.RazaoSocial)) {
+        if (!Objects.equals(this.razaoSocial, other.razaoSocial)) {
             return false;
         }
         return Objects.equals(this.segmento, other.segmento);
@@ -120,5 +116,4 @@ public class Empresa implements Serializable {
     public String toString() {
         return super.toString();
     }
-
 }

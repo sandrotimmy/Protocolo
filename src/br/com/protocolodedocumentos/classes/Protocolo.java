@@ -3,22 +3,8 @@ package br.com.protocolodedocumentos.classes;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
