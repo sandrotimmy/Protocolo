@@ -11,15 +11,14 @@ import org.hibernate.annotations.GenericGenerator;
 @XmlRootElement(name = "protocolo")
 @XmlAccessorType(XmlAccessType.NONE)
 public class Protocolo implements Serializable {
-
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(generator = "s_protocolo")
     @GenericGenerator(name = "s_protocolo", strategy = "increment")
     @XmlElement(name = "id")
     private Long id;
     @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
     @XmlElement(name = "dataProtocolo")
     private Date dataProtocolo;
     @Column(length = 3, nullable = false)
@@ -29,11 +28,11 @@ public class Protocolo implements Serializable {
     @XmlElement(name = "observacoes")
     private String observacoes;
     @OneToOne
-    @JoinColumn(name = "requerente", foreignKey = @ForeignKey(name = "fk_requerente_protocolo"))
+    @JoinColumn(name = "requerente", foreignKey = @ForeignKey(name = "fk_requerente_protocolo"), nullable = false)
     @XmlElement(name = "requerente")
     private Requerente requerente;
     @OneToOne
-    @JoinColumn(name = "empresa", foreignKey = @ForeignKey(name = "fk_empresa_protocolo"))
+    @JoinColumn(name = "empresa", foreignKey = @ForeignKey(name = "fk_empresa_protocolo"), nullable = false)
     @XmlElement(name = "empresa")
     private Empresa empresa;
     @OneToMany(mappedBy = "protocolo")
@@ -152,6 +151,6 @@ public class Protocolo implements Serializable {
 //    }
     @Override
     public String toString() {
-        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+        return "\nID: "+id+"\nData: "+dataProtocolo+"\nRetorno? "+retorno+"\nObservações: "+observacoes; //To change body of generated methods, choose Tools | Templates.
     }
 }

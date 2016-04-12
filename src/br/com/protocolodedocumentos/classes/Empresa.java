@@ -19,9 +19,10 @@ public class Empresa implements Serializable {
     @GenericGenerator(name = "s_empresa", strategy = "increment")
     @XmlElement(name = "id")
     private Long id;
+    @Column(nullable = false)
     @XmlElement(name = "CNPJ")
     private long CNPJ;
-    @Column(length = 50)
+    @Column(length = 50, nullable = false)
     @XmlElement(name = "razaoSocial")
     private String razaoSocial;
     @Column(length = 20)
@@ -114,6 +115,6 @@ public class Empresa implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "\nID: "+ id +"\nCNPJ: "+CNPJ+"\nRazão Social: "+razaoSocial+"\nSegmento: "+segmento;
     }
 }

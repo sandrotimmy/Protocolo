@@ -19,10 +19,10 @@ public class Requerente implements Serializable {
     @GenericGenerator(name = "s_requerente", strategy = "increment")
     @XmlElement(name="id")
     private Long id;
-    @Column(length = 19)
+    @Column(nullable = false)
     @XmlElement(name="CPF")
     private long CPF;
-    @Column(length = 50)
+    @Column(length = 50, nullable = false)
     @XmlElement(name="nome")
     private String nome;
     @Column(length = 20)
@@ -116,7 +116,7 @@ public class Requerente implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+        return "\nID: "+id+"\nCPF: "+CPF+"\nNome: "+nome+"\nProfissão: "+profissao; //To change body of generated methods, choose Tools | Templates.
     }
 
 }

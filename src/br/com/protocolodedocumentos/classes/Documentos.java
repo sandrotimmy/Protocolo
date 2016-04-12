@@ -24,7 +24,7 @@ public class Documentos implements Serializable {
     @Column(length = 100, nullable = false)
     @XmlElement(name = "documento")
     private String documento;
-    @Column(length = 100, nullable = false)
+    @Column(length = 100)
     @XmlElement(name = "complemento")
     private String complemento;
     @ManyToOne(optional = false)
