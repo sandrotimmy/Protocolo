@@ -1,39 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <protocolo>
     <id>1</id>
-    <dataProtocolo>2016-04-06T00:00:00-03:00</dataProtocolo>
+    <dataProtocolo>2016-04-12T00:00:00-03:00</dataProtocolo>
     <retorno>Sim</retorno>
-    <observacoes>Documentos originais</observacoes>
+    <observacoes>Todos documentos Originais</observacoes>
     <requerente>
         <id>1</id>
-        <CPF>4568</CPF>
-        <nome>Sandro Machado</nome>
-        <profissao>Tec.Contabil</profissao>
+        <CPF>46325741365</CPF>
+        <nome>Nilton Ferreira</nome>
+        <profissao>Gerente</profissao>
     </requerente>
     <empresa>
         <id>1</id>
-        <CNPJ>11111</CNPJ>
-        <RazaoSocial>EMPRESA DE FAIXADA LTDA</RazaoSocial>
-        <Segmento>Industria</Segmento>
+        <CNPJ>12658745000174</CNPJ>
+        <razaoSocial>MasterGlass LTDA</razaoSocial>
+        <segmento>Industria</segmento>
     </empresa>
     <documentos>
-        <documento>
+        <documentos>
             <id>1</id>
-            <tipo>Empresarial</tipo>
+            <tipo>Constituicao</tipo>
             <documento>Contrato Social</documento>
-            <complemento>Pertencente a Empresa Fulano de Tal LTDA</complemento>
-        </documento>
-        <documento>
+            <complemento>Pertencente a Empresa MasterGlass LTDA</complemento>
+        </documentos>
+        <documentos>
             <id>2</id>
             <tipo>Pessoal</tipo>
-            <documento>Documento Identidade</documento>
-            <complemento>Socio Anderson Lima</complemento>
-        </documento>
-        <documento>
+            <documento>Documento Identidade RG</documento>
+            <complemento>Pertencente ao Socio Anderson Lima</complemento>
+        </documentos>
+        <documentos>
             <id>3</id>
             <tipo>Imposto</tipo>
-            <documento>SIMPLES NACIONAL</documento>
+            <documento>DAS Simples Nacional</documento>
             <complemento>Competencia 04/2016</complemento>
-        </documento>
+        </documentos>
     </documentos>
 </protocolo>

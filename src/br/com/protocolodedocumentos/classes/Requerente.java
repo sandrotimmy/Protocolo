@@ -116,7 +116,7 @@ public class Requerente implements Serializable {
 
     @Override
     public String toString() {
-        return "\nID: "+id+"\nCPF: "+CPF+"\nNome: "+nome+"\nProfissão: "+profissao; //To change body of generated methods, choose Tools | Templates.
+        return "\nREQUERENTE:\nID: "+id+"\nCPF: "+CPF+"\nNome: "+nome+"\nProfissão: "+profissao; //To change body of generated methods, choose Tools | Templates.
     }
 
 }

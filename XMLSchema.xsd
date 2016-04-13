@@ -11,7 +11,7 @@
       <xs:element name="observacoes" type="xs:string" minOccurs="0"/>
       <xs:element name="requerente" type="requerente" minOccurs="0"/>
       <xs:element name="empresa" type="empresa" minOccurs="0"/>
-      <xs:element name="documentos2" minOccurs="0">
+      <xs:element name="documentos" minOccurs="0">
         <xs:complexType>
           <xs:sequence>
             <xs:element name="documentos" type="documentos" minOccurs="0" maxOccurs="unbounded"/>
@@ -34,8 +34,8 @@
     <xs:sequence>
       <xs:element name="id" type="xs:long" minOccurs="0"/>
       <xs:element name="CNPJ" type="xs:long"/>
-      <xs:element name="RazaoSocial" type="xs:string" minOccurs="0"/>
-      <xs:element name="Segmento" type="xs:string" minOccurs="0"/>
+      <xs:element name="razaoSocial" type="xs:string" minOccurs="0"/>
+      <xs:element name="segmento" type="xs:string" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 

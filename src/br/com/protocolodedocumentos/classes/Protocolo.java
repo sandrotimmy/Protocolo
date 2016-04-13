@@ -36,7 +36,7 @@ public class Protocolo implements Serializable {
     @XmlElement(name = "empresa")
     private Empresa empresa;
     @OneToMany(mappedBy = "protocolo")
-    @XmlElementWrapper(name = "documentos2")
+    @XmlElementWrapper(name = "documentos")
     @XmlElement(name = "documentos")
     private List<Documentos> documentos;
 
@@ -151,6 +151,6 @@ public class Protocolo implements Serializable {
 //    }
     @Override
     public String toString() {
-        return "\nID: "+id+"\nData: "+dataProtocolo+"\nRetorno? "+retorno+"\nObservações: "+observacoes; //To change body of generated methods, choose Tools | Templates.
+        return "\nPROTOCOLO:\nID: "+id+"\nData: "+dataProtocolo+"\nRetorno? "+retorno+"\nObservações: "+observacoes; //To change body of generated methods, choose Tools | Templates.
     }
 }

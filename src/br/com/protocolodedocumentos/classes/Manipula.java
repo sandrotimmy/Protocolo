@@ -1,8 +1,14 @@
 package br.com.protocolodedocumentos.classes;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.StringReader;
-import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -16,6 +22,9 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
+import org.apache.commons.io.FileUtils;
+import org.json.JSONObject;
+import org.json.XML;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
@@ -47,13 +56,16 @@ public class Manipula {
                 + "\nProfissão: " + protocolo.getRequerente().getProfissao());
     }
 
-    public void geraXml(Protocolo protocolo, Writer writer) throws PropertyException, JAXBException {
+    public void geraXml(Protocolo protocoloBusca, Writer writer) throws PropertyException, JAXBException, UnsupportedEncodingException, FileNotFoundException, IOException {
 
-
-        JAXBContext context = JAXBContext.newInstance(new Class[]{Protocolo.class});
+        JAXBContext context = JAXBContext.newInstance(Protocolo.class);
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        marshaller.marshal(protocolo, writer);
+        marshaller.marshal(protocoloBusca, writer);
+
+        Writer file = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("C:/Users/Sandro/Documents/RepositorioGIT/ProtocoloDeDocumentos/ArquivoXML.xml"), "ISO-8859-1"));
+        file.write(writer.toString());
+        file.close();
 
     }
 
@@ -66,7 +78,7 @@ public class Manipula {
 
         try {
             //carrega o schema
-            Schema schema = factory.newSchema(new StreamSource("C:/Users/Administrador/Documents/RepositorioGIT/ProtocoloDeDocumentos/" + xsdFileName));
+            Schema schema = factory.newSchema(new StreamSource("C:/Users/Sandro/Documents/RepositorioGIT/ProtocoloDeDocumentos/" + xsdFileName));
             Validator validator = schema.newValidator();
 
             //Procedendo a Validação
@@ -82,6 +94,31 @@ public class Manipula {
                 return "Unknow error attemping to validate XML.";
             }
         }
-        return "XML Validado Com Sucesso!";
+        return "\n\n==============\nXML Validado Com Sucesso!";
+    }
+
+    public void geraJson() throws IOException {
+        
+// Monta o objeto em uma string 
+
+        System.out.println("\n\n=========\nGERANDO JSON");
+        File f = new File("C:/Users/Sandro/Documents/RepositorioGIT/ProtocoloDeDocumentos/ArquivoXML.xml");
+        //Passa o Arquivo XML para String
+        String xml = FileUtils.readFileToString(f);
+        // Cria um JSONObject a partir do arquivo XML em string
+        JSONObject protocoloJson = XML.toJSONObject(xml);
+        //Identa
+        String protocoloJsonIndent = protocoloJson.toString(4);
+        System.out.println(protocoloJsonIndent);
+        //Grava no arquivo
+        try {
+            try (FileWriter writeFile = new FileWriter("ArquivoEmJSON.json")) {
+                writeFile.write(protocoloJsonIndent);
+            }
+        } catch (IOException e) {
+        }
+        //Imprime
+        System.out.println("\n\nJSON GERADO COM SUCESSO!");
+
     }
 }

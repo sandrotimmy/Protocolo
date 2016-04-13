@@ -121,6 +121,6 @@ public class Documentos implements Serializable {
 
     @Override
     public String toString() {
-        return "\nCODIGO: " + id + "\nTIPO: " + tipo + "\nDOCUMENTO: " + documento + "\nCOMPLEMENTO: " + complemento;
+        return "\nDOCUMENTOS:\nID: " + id + "\nTIPO: " + tipo + "\nDOCUMENTO: " + documento + "\nCOMPLEMENTO: " + complemento;
     }
 }
