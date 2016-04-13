@@ -29,7 +29,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
-public class Manipula {
+public class Manipula { 
 
     public void geraXmlSchema() throws JAXBException, IOException {
         JAXBContext jc = JAXBContext.newInstance(Protocolo.class);
@@ -89,9 +89,9 @@ public class Manipula {
 
         } catch (SAXException | IOException | ParserConfigurationException e) {
             if (e instanceof SAXParseException) {
-                return "XML Parse Error on Col: " + ((SAXParseException) e).getColumnNumber() + " | Lin: " + ((SAXParseException) e).getLineNumber() + " - " + ((SAXParseException) e).getLocalizedMessage();
+                return "XML Erro de Parse na Col: " + ((SAXParseException) e).getColumnNumber() + " | Lin: " + ((SAXParseException) e).getLineNumber() + " - " + ((SAXParseException) e).getLocalizedMessage();
             } else {
-                return "Unknow error attemping to validate XML.";
+                return "Erro desconhecido ao tentar validar o XML.";
             }
         }
         return "\n\n==============\nXML Validado Com Sucesso!";

@@ -115,6 +115,6 @@ public class Empresa implements Serializable {
 
     @Override
     public String toString() {
-        return "\nEMPRESA:\nID: "+ id +"\nCNPJ: "+CNPJ+"\nRazão Social: "+razaoSocial+"\nSegmento: "+segmento;
+        return "\nEMPRESA:\nID: " + id + "\nCNPJ: " + CNPJ + "\nRazão Social: " + razaoSocial + "\nSegmento: " + segmento;
     }
 }
